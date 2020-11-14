@@ -1,0 +1,24 @@
+# Maintainer: Danila Maslennikov <d.v.maslennikov@outlook.com>
+pkgname=kvarc-fall-git
+pkgver=r2.2635616
+pkgrel=1
+pkgdesc="Customized version of Kvantum Arc theme"
+arch=("any")
+url="https://github.com/Dnnd/KvArcFall"
+license=('GPL')
+depends=('kvantum-qt5')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+https://github.com/Dnnd/KvArcFall.git")
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+	cd "$srcdir/$pkgname"
+    install -Dm644 "KvArcFall.kvconfig" "KvArcFall.svg"  -t "$pkgdir/usr/share/Kvantum/KvArcFall/"
+}
