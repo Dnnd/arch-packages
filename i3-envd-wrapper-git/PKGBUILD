@@ -1,0 +1,25 @@
+# Maintainer: Danila Maslennikov <d.v.maslennikov@outlook.com>
+pkgname=i3-envd-wrapper-git
+pkgver=r4.15a9c3d
+pkgrel=1
+pkgdesc="Wrapper to load env variables in i3 session"
+arch=("any")
+url="https://github.com/Dnnd/i3-envd-wrapper"
+license=('MIT')
+depends=('i3-wm')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+https://github.com/Dnnd/i3-envd-wrapper.git")
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+	cd "$srcdir/$pkgname"
+	install -Dm755 "i3-envd-wrapper" "$pkgdir/usr/bin/i3-envd-wrapper"
+	install -Dm644 "i3-envd.desktop" "$pkgdir/usr/share/xsessions/i3-envd.desktop"
+}
