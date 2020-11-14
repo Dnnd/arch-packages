@@ -1,0 +1,26 @@
+# Maintainer: Danila Maslennikov <d.v.maslennikov@outlook.com>
+pkgname=sddm-fall-git
+arch=(any)
+pkgver=r2.672027d
+pkgrel=1
+pkgdesc="Sddm Fall Theme"
+url="https://github.com/Dnnd/sddm-fall"
+license=('GPL')
+depends=('sddm' 'qt5-quickcontrols2')
+makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+https://github.com/Dnnd/sddm-fall.git")
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    cd "$srcdir/$pkgname"
+    install -d "$pkgdir/usr/share/sddm/themes/${pkgname%-git}"
+    cp -r -t "$pkgdir/usr/share/sddm/themes/${pkgname%-git}" "Assets" "Backgrounds" "Components"
+    install -t "$pkgdir/usr/share/sddm/themes/${pkgname%-git}" COPYING *.qml *.desktop *.conf 
+}
