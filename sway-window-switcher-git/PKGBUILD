@@ -1,0 +1,35 @@
+# Maintainer: Danila Maslennikov <d.v.maslennikov@outlook.com>
+pkgname=sway-window-switcher-git
+pkgver=r3.2896ab1
+pkgrel=1
+pkgdesc="Wofi helper script to switch windows"
+arch=('x86_64')
+url="https://github.com/Dnnd/sway-window-switcher"
+license=('Apache')
+depends=('wofi' 'sway')
+makedepends=('git' 'go') # 'bzr', 'git', 'mercurial' or 'subversion'
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('sway-window-switcher-git::git+https://github.com/Dnnd/sway-window-switcher.git')
+md5sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "$srcdir/${pkgname}"
+    go build -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -o "${pkgname%-git}" 
+}
+
+
+package() {
+    cd "$srcdir/${pkgname}"
+    install -d  "$pkgdir/usr/bin/"
+    install -m755 "${pkgname%-git}" "$pkgdir/usr/bin/sw-ws"
+}
