@@ -21,6 +21,6 @@ pkgver() {
 package() {
 	cd "$srcdir/$pkgname"
 	install -Dm755 "sway-envd-wrapper" "$pkgdir/usr/bin/sway-envd-wrapper"
-	install -Dm644 "sway-envd.desktop" "$pkgdir/usr/share/xsessions/sway-envd.desktop"
-	install -Dm644 "sway-envd-nvidia.desktop" "$pkgdir/usr/share/xsessions/sway-envd-nvidia.desktop"
+	install -Dm644 "sway-envd.desktop" "$pkgdir/usr/share/wayland-sessions/sway-envd.desktop"
+	install -Dm644 "sway-envd-nvidia.desktop" "$pkgdir/usr/share/wayland-sessions/sway-envd-nvidia.desktop"
 }
