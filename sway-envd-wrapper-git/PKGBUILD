@@ -1,12 +1,12 @@
 # Maintainer: Danila Maslennikov <d.v.maslennikov@outlook.com>
 pkgname=sway-envd-wrapper-git
-pkgver=r5.319f465
+pkgver=r6.3893832
 pkgrel=1
 pkgdesc="Wrapper to load env variables in sway session"
 arch=("any")
 url="https://github.com/Dnnd/sway-envd-wrapper"
 license=('MIT')
-depends=('sway')
+depends=('sway' 'envd')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

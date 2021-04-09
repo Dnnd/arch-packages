@@ -1,12 +1,12 @@
 # Maintainer: Danila Maslennikov <d.v.maslennikov@outlook.com>
 pkgname=i3-envd-wrapper-git
-pkgver=r4.15a9c3d
+pkgver=r5.077ce81
 pkgrel=1
 pkgdesc="Wrapper to load env variables in i3 session"
 arch=("any")
 url="https://github.com/Dnnd/i3-envd-wrapper"
 license=('MIT')
-depends=('i3-wm')
+depends=('i3-wm' 'envd')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
