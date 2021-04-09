@@ -1,0 +1,23 @@
+# Maintainer: Danila Maslennikov <d.v.maslennikov@outlook.com>
+pkgname=envd-git
+pkgver=r2.c796e94
+pkgrel=1
+pkgdesc="Script to set/unset environment variables on per-session basis"
+arch=("any")
+url="https://github.com/Dnnd/envd"
+license=('MIT')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+https://github.com/Dnnd/envd.git")
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+	cd "$srcdir/$pkgname"
+	install -Dm755 "envd" "$pkgdir/usr/bin/envd"
+}
