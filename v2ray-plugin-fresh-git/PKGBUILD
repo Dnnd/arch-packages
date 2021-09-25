@@ -1,7 +1,7 @@
 # Maintainer: Danila Maslennikov <d.v.maslennikov@outlook.com>
 pkgname=v2ray-plugin-fresh-git
 pkgrel=1
-pkgver=r117.80f59c3
+pkgver=r119.32291a6
 pkgdesc="v2ray shadowsocks plugin with fresh v2ray-core version"
 arch=('x86_64')
 url="https://github.com/Dnnd/v2ray-plugin"
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname}"
-    go build -trimpath \
+    CGO_ENABLED=0 go build -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
