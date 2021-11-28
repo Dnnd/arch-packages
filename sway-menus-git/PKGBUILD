@@ -1,16 +1,17 @@
 # Maintainer: Danila Maslennikov <d.v.maslennikov@outlook.com>
-pkgname=sway-window-switcher-git
-pkgver=r3.2896ab1
+pkgname=sway-menus-git
+pkgver=r7.7da075e
 pkgrel=1
-pkgdesc="Wofi helper script to switch windows"
+pkgdesc="Menus collection for sway"
 arch=('x86_64')
-url="https://github.com/Dnnd/sway-window-switcher"
+url="https://github.com/Dnnd/sway-menus"
 license=('Apache')
-depends=('wofi' 'sway')
-makedepends=('git' 'go') # 'bzr', 'git', 'mercurial' or 'subversion'
+depends=('sway' 'systemd')
+optdepends=('wofi' 'rofi')
+makedepends=('git' 'go') 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('sway-window-switcher-git::git+https://github.com/Dnnd/sway-window-switcher.git')
+source=('sway-menus-git::git+https://github.com/Dnnd/sway-menus.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -31,5 +32,5 @@ build() {
 package() {
     cd "$srcdir/${pkgname}"
     install -d  "$pkgdir/usr/bin/"
-    install -m755 "${pkgname%-git}" "$pkgdir/usr/bin/sw-ws"
+    install -m755 "${pkgname%-git}" "$pkgdir/usr/bin/sw-menus"
 }

@@ -1,7 +1,7 @@
 # Maintainer: Danila Maslennikov <d.v.maslennikov@outlook.com>
 pkgname=sddm-fall-git
 arch=(any)
-pkgver=r2.672027d
+pkgver=r5.77ec3d8
 pkgrel=1
 pkgdesc="Sddm Fall Theme"
 url="https://github.com/Dnnd/sddm-fall"

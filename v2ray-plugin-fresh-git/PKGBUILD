@@ -1,7 +1,7 @@
 # Maintainer: Danila Maslennikov <d.v.maslennikov@outlook.com>
 pkgname=v2ray-plugin-fresh-git
 pkgrel=1
-pkgver=r119.32291a6
+pkgver=r120.0896d4c
 pkgdesc="v2ray shadowsocks plugin with fresh v2ray-core version"
 arch=('x86_64')
 url="https://github.com/Dnnd/v2ray-plugin"
